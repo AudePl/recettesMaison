@@ -1,1 +1,24 @@
-$light-grey: #b5c2bf;
+/*Colors*/
+
+$light-grey: #e2e8e8;
+$dark-grey: #475c59;
+
+$light-blue: #57b1aa;
+$dark-blue: #035074;
+
+$gold: #fdaa00;
+
+
+/*Font family*/
+
+@font-face
+{
+  font-family: "Dancing Script";
+  src: url('/assets/font/Dancing_Script/DancingScript.ttf');
+  font-family: "Source Sans Pro Light";
+  src: url('/assets/font/Source_Sans_Pro/SourceSansPro-Light.ttf');
+}
+
+$font-family-title: 'Dancing Script', sans-serif;
+$font-family: 'Source Sans Pro Light', sans-serif;
+
