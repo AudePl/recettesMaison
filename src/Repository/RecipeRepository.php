@@ -36,6 +36,18 @@ class RecipeRepository extends ServiceEntityRepository
         return $queryBuilder->getResult();
     }
 
+    public function findByCategory($value)
+    {
+        $queryBuilder = $this->createQueryBuilder('r')
+            ->addSelect('sc')
+            ->join('r.subCategory', 'sc')
+            ->where('sc.category = :val')
+            ->setParameter('val', $value)
+            ->getQuery();
+
+        return $queryBuilder->getResult();
+    }
+
 
     /*
     public function findOneBySomeField($value): ?Recipe

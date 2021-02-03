@@ -21,7 +21,7 @@
     <div class="searchBar">
         <h2>Recherche par catégorie</h2>
         {{ form_start(formCategory) }}
-        {{ form_row(formCategory.category) }}
+        {{ form_widget(formCategory) }}
         <button class="search-btn"><img class="logo-search" src="{{ asset('build/loupe.svg') }}" alt="logo-search"></button>
         {{ form_end(formCategory) }}
     </div>

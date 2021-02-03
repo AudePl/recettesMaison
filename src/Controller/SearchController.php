@@ -36,6 +36,24 @@ class SearchController extends AbstractController
             ]);
         }
 
+        if ($formCategory->isSubmitted() && $formCategory->isValid()) {
+            $search = $formCategory->getData()->getCategory();
+            $recipes = $recipeRepository->findByCategory($search);
+
+            return $this->render('search/results.html.twig', [
+                'recipes' => $recipes,
+            ]);
+        }
+
+        if ($formSubCategory->isSubmitted() && $formSubCategory->isValid()) {
+            $search = $formSubCategory->getData()->getSubCategory();
+            $recipes = $recipeRepository->findBy(['subCategory' => $search]);
+
+            return $this->render('search/results.html.twig', [
+                'recipes' => $recipes,
+            ]);
+        }
+
         return $this->render('search/index.html.twig', [
             'formSearch' => $formSearch->createView(),
             'formCategory' => $formCategory->createView(),
