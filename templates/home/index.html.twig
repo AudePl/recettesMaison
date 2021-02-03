@@ -11,16 +11,11 @@
     </div>
  <div class="content">
      <h2>Retrouvez les meilleures recettes</h2>
+
      <div class="cards-recipe">
-         {% include 'components/_card.html.twig' %}
-         {% include 'components/_card.html.twig' %}
-         {% include 'components/_card.html.twig' %}
-         {% include 'components/_card.html.twig' %}
-         {% include 'components/_card.html.twig' %}
-         {% include 'components/_card.html.twig' %}
-         {% include 'components/_card.html.twig' %}
-         {% include 'components/_card.html.twig' %}
-         {% include 'components/_card.html.twig' %}
+         {% for recipe in recipes %}
+             {% include 'components/_card.html.twig' %}
+         {% endfor %}
      </div>
  </div>
 </div>

@@ -1,8 +1,14 @@
 <div class="card mt-3" style="width: 18rem;">
-    <img src="{{ asset('build/cook-6.jpg') }}" class="card-img-top" alt="picture-cook">
+    <img src="{{ recipe.pictureUrl }}" class="card-img-top" alt="picture-cook">
     <div class="card-body">
-        <h5 class="card-title">Catégorie de la recette</h5>
-        <p class="card-text">Titre de la recette</p>
-        <a href="#" class="btn btn-card">Voir la recette</a>
+        <h5 class="card-title">{{ recipe.subCategory.name }}</h5>
+
+        <div class="card-text">
+            {{ recipe.title }}
+            {% if recipe.isFavorite %}
+                <img src="{{ asset('build/star.svg') }}" class="star-favorite">
+            {% endif %}
+        </div>
+        <a href="{{ path('recipe_show', {id: recipe.id}) }}" class="btn btn-card">Voir la recette</a>
     </div>
 </div>

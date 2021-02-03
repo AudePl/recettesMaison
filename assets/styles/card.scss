@@ -1,10 +1,27 @@
 .card {
   box-shadow: 5px 5px 15px $dark-grey;
+
+  .btn-card {
+    background-color: $gold;
+    padding: 5px;
+    border-radius: 10px;
+    color: $dark-blue;
+    box-shadow: 2px 2px 10px $dark-grey;
+  }
+
+  .card-img-top {
+    min-height: 200px;
+    max-height: 200px;
+  }
+
+  .star-favorite {
+      width: 20px;
+  }
+
+  .card-text {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
 }
 
-.btn-card {
-  background-color: $light-blue;
-  padding: 5px;
-  border-radius: 10px;
-  color: $dark-blue;
-}
