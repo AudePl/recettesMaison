@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rechercher{% endblock %}
+
+{% block body %}
+
+<div class="searchPage">
+    <div class="header">
+        <h1>Rechercher une recette</h1>
+        <img src="{{ asset('build/cook-3.jpg') }}">
+    </div>
+
+    <div class="searchBar">
+        <h2>Recherche par mot-clé</h2>
+        {{ form_start(formSearch) }}
+        {{ form_row(formSearch.search) }}
+        <button class="search-btn"><img class="logo-search" src="{{ asset('build/loupe.svg') }}" alt="logo-search"></button>
+        {{ form_end(formSearch) }}
+    </div>
+
+    <div class="searchBar">
+        <h2>Recherche par catégorie</h2>
+        {{ form_start(formCategory) }}
+        {{ form_row(formCategory.category) }}
+        <button class="search-btn"><img class="logo-search" src="{{ asset('build/loupe.svg') }}" alt="logo-search"></button>
+        {{ form_end(formCategory) }}
+    </div>
+
+    <div class="searchBar">
+        <h2>Recherche par sous-catégorie</h2>
+        {{ form_start(formSubCategory) }}
+        {{ form_row(formSubCategory.subCategory) }}
+        <button class="search-btn"><img class="logo-search" src="{{ asset('build/loupe.svg') }}" alt="logo-search"></button>
+        {{ form_end(formSubCategory) }}
+    </div>
+
+
+
+</div>
+{% endblock %}
