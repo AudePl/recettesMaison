@@ -16,6 +16,7 @@
 ###< symfony/phpunit-bridge ###
 
 .idea
+/migrations/
 
 ###> symfony/webpack-encore-bundle ###
 /node_modules/
