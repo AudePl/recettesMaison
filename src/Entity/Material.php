@@ -20,7 +20,7 @@ class Material
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private $naÃme;
+    private $name;
 
     /**
      * @ORM\ManyToOne(targetEntity=Recipe::class, inversedBy="materials")
@@ -33,14 +33,14 @@ class Material
         return $this->id;
     }
 
-    public function getNaÃme(): ?string
+    public function getName(): ?string
     {
-        return $this->naÃme;
+        return $this->name;
     }
 
-    public function setNaÃme(string $naÃme): self
+    public function setName(string $name): self
     {
-        $this->naÃme = $naÃme;
+        $this->name = $name;
 
         return $this;
     }

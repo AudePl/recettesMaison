@@ -45,6 +45,16 @@ class Recipe
      */
     private $ingredients;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $pictureUrl;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isFavorite = false;
+
     public function __construct()
     {
         $this->materials = new ArrayCollection();
@@ -148,6 +158,30 @@ class Recipe
                 $ingredient->setRecipe(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPictureUrl(): ?string
+    {
+        return $this->pictureUrl;
+    }
+
+    public function setPictureUrl(?string $pictureUrl): self
+    {
+        $this->pictureUrl = $pictureUrl;
+
+        return $this;
+    }
+
+    public function getIsFavorite(): ?bool
+    {
+        return $this->isFavorite;
+    }
+
+    public function setIsFavorite(bool $isFavorite): self
+    {
+        $this->isFavorite = $isFavorite;
 
         return $this;
     }
