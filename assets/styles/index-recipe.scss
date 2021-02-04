@@ -1,0 +1,39 @@
+.index-recipe {
+
+  h2 {
+    text-align: center;
+  }
+
+  .list-manage-recipe {
+    text-align: center;
+
+    ul {
+      list-style: none;
+    }
+  }
+
+  .manage-recipe {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+
+
+
+    a {
+      text-decoration: none;
+    }
+
+    p {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+
+  .btn-manage {
+    border: none;
+    color: $dark-blue;
+    background-color: $white;
+
+  }
+
+}
