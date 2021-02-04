@@ -12,11 +12,14 @@
     width: 50%;
     border-radius: 20px;
     box-shadow: 5px 5px 15px $dark-grey;
+    object-fit: cover;
+    max-height: 60vh;
   }
 
   .details-recipe {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
     margin-top: 30px;
   }
 
@@ -57,6 +60,12 @@
     margin: auto;
     margin-top: 30px;
     padding: 20px;
+  }
+
+  @media screen and (min-width: 1000px) {
+    .picture-recipe {
+      max-width: 40%;
+    }
   }
 
 }

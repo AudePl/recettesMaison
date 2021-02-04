@@ -4,10 +4,9 @@
 
 {% block body %}
 
-    <div class="result-search">
+    <div class="result-search" {% if recipes is empty %} style="height: 100%" {% endif %}>
         <div class="header">
             <h1>Recettes Maison</h1>
-            <img src="{{ asset('build/agrumes.jpg') }}">
         </div>
         {% if recipes is empty %}
         <div class="not-result">
