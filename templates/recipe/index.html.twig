@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Toutes Mes Recettes{% endblock %}
+
+{% block body %}
+
+    <div class="homepage">
+        <div class="header">
+            <h1>Recettes Maison</h1>
+            <img src="{{ asset('build/cook-7.jpg') }}">
+        </div>
+        <div class="content">
+            <h2>Toutes mes recettes</h2>
+
+            <div class="cards-recipe">
+                <ul>
+                    {% for recipe in recipes %}
+                    <li>
+                        {{ recipe.title }} :
+                        <a href="{{ path('recipe_edit', { id : recipe.id }) }}">Editer</a> / <a href="#">Supprimer</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
