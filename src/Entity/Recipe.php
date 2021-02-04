@@ -36,12 +36,11 @@ class Recipe
     private $subCategory;
 
     /**
-     * @ORM\OneToMany(targetEntity=Material::class, mappedBy="recipe")
+     * @ORM\OneToMany(targetEntity=Material::class, mappedBy="recipe", cascade={"persist"})
      */
     private $materials;
-
     /**
-     * @ORM\OneToMany(targetEntity=Ingredient::class, mappedBy="recipe")
+     * @ORM\OneToMany(targetEntity=Ingredient::class, mappedBy="recipe", cascade={"persist"})
      */
     private $ingredients;
 
