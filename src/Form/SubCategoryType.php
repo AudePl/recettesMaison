@@ -18,7 +18,7 @@ class SubCategoryType extends AbstractType
             ->add('subCategory', EntityType::class, [
                 'class' => SubCategory::class,
                 'choice_label' => 'name',
-                'label' => 'Choisir une sous-catégorie :'
+                'label' => false,
             ])
         ;
     }

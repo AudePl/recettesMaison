@@ -4,11 +4,17 @@
 
 {% block body %}
 
-    <div class="homepage">
+    <div class="result-search">
         <div class="header">
             <h1>Recettes Maison</h1>
-            <img src="{{ asset('build/cook-7.jpg') }}">
+            <img src="{{ asset('build/agrumes.jpg') }}">
         </div>
+        {% if recipes is empty %}
+        <div class="not-result">
+            <p>Pas de résultat correspondant à la recherche</p>
+            <a href="{{ path('search') }}">Retour</a>
+        </div>
+        {% else %}
         <div class="content">
             <h2>Résultats de la recherche</h2>
 
@@ -18,5 +24,6 @@
                 {% endfor %}
             </div>
         </div>
+        {% endif %}
     </div>
 {% endblock %}

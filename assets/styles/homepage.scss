@@ -5,11 +5,10 @@
         font-family: $font-family-title;
     }
 
-    .cards-recipe {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-    }
+}
 
-
+.cards-recipe {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
