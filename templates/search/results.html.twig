@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recettes trouvées{% endblock %}
+
+{% block body %}
+
+    <div class="result-search">
+        <div class="header">
+            <h1>Recettes Maison</h1>
+            <img src="{{ asset('build/agrumes.jpg') }}">
+        </div>
+        {% if recipes is empty %}
+        <div class="not-result">
+            <p>Pas de résultat correspondant à la recherche</p>
+            <a href="{{ path('search') }}">Retour</a>
+        </div>
+        {% else %}
+        <div class="content">
+            <h2>Résultats de la recherche</h2>
+
+            <div class="cards-recipe">
+                {% for recipe in recipes %}
+                    {% include 'components/_card.html.twig' %}
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+{% endblock %}

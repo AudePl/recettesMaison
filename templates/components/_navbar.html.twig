@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#"><img class="logoRamen" src="{{ asset('build/logoRamen2.svg') }}"></a>
+    <a class="navbar-brand" href="{{ path('home') }}"><img class="logoRamen" src="{{ asset('build/logoRamen2.svg') }}"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -12,7 +12,7 @@
                 <a class="nav-link" href="{{ path('recipe_favorite') }}">Mes Recettes préférées</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link " href="#">Mes Catégories</a>
+                <a class="nav-link " href="{{ path('search') }}">Mes Catégories</a>
             </li>
         </ul>
     </div>
