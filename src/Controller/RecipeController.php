@@ -42,9 +42,18 @@ class RecipeController extends AbstractController
         $formRecipe->handleRequest($request);
 
         if ($formRecipe->isSubmitted() && $formRecipe->isValid()) {
-
+            foreach ($recipe->getMaterials() as $material) {
+                $material->setRecipe($recipe);
+                $entityManager->persist($material);
+            }
+            foreach ($recipe->getIngredients() as $ingredient) {
+                $ingredient->setRecipe($recipe);
+                $entityManager->persist($ingredient);
+            }
             $entityManager->persist($recipe);
             $entityManager->flush();
+
+            return $this->redirectToRoute('home');
         }
 
         return $this->render('recipe/new.html.twig', [
