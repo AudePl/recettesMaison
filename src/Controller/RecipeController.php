@@ -18,6 +18,17 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class RecipeController extends AbstractController
 {
+    /**
+     * @Route("/", name="index")
+     */
+    public function index(RecipeRepository $recipeRepository): Response
+    {
+        $recipes = $recipeRepository->findAll();
+
+        return $this->render('recipe/index.html.twig', [
+            'recipes' => $recipes,
+        ]);
+    }
 
     /**
      * @Route("/favorite", name="favorite")
@@ -76,5 +87,57 @@ class RecipeController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/{id}/edit", methods={"GET","POST"}, name="edit")
+     */
+    public function edit(Recipe $recipe, Request $request, EntityManagerInterface $entityManager): Response
+    {
+        if (!$recipe) {
+            throw $this->createNotFoundException(
+                'No recipe with this id found in recipe\'s table.'
+            );
+        }
+
+        $formRecipe = $this->createForm(RecipeType::class, $recipe);
+        $formRecipe->handleRequest($request);
+
+        if ($formRecipe->isSubmitted() && $formRecipe->isValid()) {
+            foreach ($recipe->getMaterials() as $material) {
+                $material->setRecipe($recipe);
+                $entityManager->persist($material);
+            }
+            foreach ($recipe->getIngredients() as $ingredient) {
+                $ingredient->setRecipe($recipe);
+                $entityManager->persist($ingredient);
+            }
+
+            $entityManager->flush();
+
+            return $this->redirectToRoute('recipe_show', ['id' => $recipe->getId()]);
+        }
+
+        return $this->render('recipe/new.html.twig', [
+            'recipe' => $recipe,
+            'formRecipe' => $formRecipe->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", methods={"DELETE"}, name="delete")
+     */
+    public function delete(Recipe $recipe, Request $request, EntityManagerInterface $entityManager): Response
+    {
+        if ($this->isCsrfTokenValid('delete' . $recipe->getId(), $request->request->get('_token'))) {
+            foreach ($recipe->getMaterials() as $material) {
+                $entityManager->remove($material);
+            }
+            foreach ($recipe->getIngredients() as $ingredient) {
+                $entityManager->remove($ingredient);
+            }
+            $entityManager->remove($recipe);
+            $entityManager->flush();
+        }
+        return $this->redirectToRoute('recipe_index');
+    }
 
 }
