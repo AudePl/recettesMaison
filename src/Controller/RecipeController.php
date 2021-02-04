@@ -2,9 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\Ingredient;
+use App\Entity\Material;
 use App\Entity\Recipe;
+use App\Form\RecipeType;
 use App\Repository\RecipeRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -26,6 +31,26 @@ class RecipeController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/new", name="new")
+     */
+    public function new(RecipeRepository $recipeRepository, Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $recipe = new Recipe();
+
+        $formRecipe = $this->createForm(RecipeType::class, $recipe);
+        $formRecipe->handleRequest($request);
+
+        if ($formRecipe->isSubmitted() && $formRecipe->isValid()) {
+
+            $entityManager->persist($recipe);
+            $entityManager->flush();
+        }
+
+        return $this->render('recipe/new.html.twig', [
+            'formRecipe' => $formRecipe->createView(),
+        ]);
+    }
 
     /**
      * @Route("/{id}", methods={"GET"}, name="show")

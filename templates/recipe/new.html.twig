@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recettes maison{% endblock %}
+
+{% block body %}
+
+    <div class="new-recipe">
+        {#<div class="header">
+            <h1>Enregistrer une nouvelle recette</h1>
+            <img src="{{ asset('build/cook-3.jpg') }}">
+        </div>#}
+
+        <div class="searchBar">
+            <h2>Enregistrer une nouvelle recette</h2>
+            {{ form_start(formRecipe) }}
+            {{ form_row(formRecipe.title) }}
+            {{ form_row(formRecipe.subCategory) }}
+            {{ form_row(formRecipe.pictureUrl) }}
+            {{ form_row(formRecipe.isFavorite) }}
+            {{ form_row(formRecipe.description) }}
+
+            <h3>Matériel :</h3>
+            <button type="button" class="add_item_link" data-collection-holder-class="materials">Add</button>
+            <ul class="materials" data-prototype="{{ form_widget(formRecipe.materials.vars.prototype)|e('html_attr') }}">
+                {% for material in formRecipe.materials %}
+                <li>{{ form_row(material.name) }}</li>
+                {% endfor %}
+            </ul>
+
+            <h3>Ingrédients :</h3>
+            <button type="button" class="add_item_link" data-collection-holder-class="ingredients">Add</button>
+            <ul class="ingredients" data-prototype="{{ form_widget(formRecipe.ingredients.vars.prototype)|e('html_attr') }}">
+                {% for ingredient in formRecipe.ingredients %}
+                    <li>{{ form_row(ingredient.name) }} {{ form_row(ingredient.quantity) }}</li>
+                {% endfor %}
+            </ul>
+
+            <button type="submit" class="search-btn">Enregistrer</button>
+            {{ form_end(formRecipe) }}
+        </div>
+    </div>
+{% endblock %}
